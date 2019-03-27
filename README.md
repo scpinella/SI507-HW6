@@ -94,7 +94,7 @@ alert(<text>) will print your text in a pop up box. This is a good place to put 
 
 * **What code would have to comment out to get rid of the pop-up box when you load the page? (Related to the last question.) Do that in the code file, and then, add code so that a text box will appear that contains the current date and time! *HINT:* Look through the rest of the code first...**
 
-You need to comment out line 13 which says ```alert("hello");```. I put a box with the current date and time at the top of the page. But I wasn't sure if you meant a pop up box?
+You need to comment out line 13 which says ```alert("hello");```. To instead have code that gives the current date and time, insert ```alert(Date());``` in line 14.
 
 * **How can you put your own name at the top where it currently says "A name"? Explain very briefly how to do so, and replace `A name` in the web page with your own name.**
 
@@ -102,14 +102,28 @@ You just have to replace the string "A name" with your own name in quotes, I did
 
 * **What does the word `document` represent in this code? Explain briefly.**
 
+The DOM (document object model) represents the structure of the page. Thus `document` is what JavaScript calls this object, so you use document.<something> to access elements (or methods) of the page.  
+
 
 * **What is happening in line 12 (
 		`document.querySelector('#items').innerHTML = document.getElementsByTagName('li').length`
 )? Explain, briefly (<= 2 sentences).**
 
+This query counts the number of elements that are in a list. It just looks for items with the <li> tag.
+
 * **What color would the background of this page be <u>if there were no JavaScript in this page</u>?**
 
 * **Why are there a couple of gray boxes on the screen with a different colored border? How could you edit this code to make them a different color? Explain briefly. Then edit the code to make those boxes some shade of blue, of your choosing.**
+
+It's because the paragraph tag <p> was restyled:
+
+```p{
+	background-color: #b3b3b3;
+	border: 3px solid #FFFFFF;
+	padding: 3%;
+	font-size: 1.1em;
+	line-height: 1.5;
+}```
 
 * **Edit the code so that, if you highlight `McGill University` and copy it, you see the text `O Canada` near the bottom of the page. Briefly explain why you made the edits that you did -- how did you know/figure out what to do?**
 
