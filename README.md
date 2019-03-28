@@ -57,13 +57,8 @@ Below are a bunch of questions and indications of things to do. For each indicat
 
 ### Names of people you have worked with on this assignment
 * List everyone's names and uniqnames who have worked on this assignment with you, **including your own name, but make sure YOUR name is first and bold**
-* Like this:
-* **Jackie Cohen (jczetta)**
-* Yea-Ree Chang (cyearee)
-* Ruchi Ookalkar (ruchido)
-* Innocent Obi (innoobi)
-* Zhen Wang (alejwang)
-* etc.
+* **Samantha Pinella (spinella)**
+
 
 ## Questions & code instructions
 
@@ -79,26 +74,26 @@ Some JavaScript code
 
 * **What does a code comment look like in JavaScript? What character/s do you have to put before a comment?**
 
-A code comment is statement explaining or organizing the code, it is indicated by // at the beginning of the text.
+A code comment is statement explaining or organizing the code. It is indicated by ```//``` at the beginning of the text in JavaScript.
 
 
 * **Explain what needs to happen to get a JavaScript program to "run", given the JavaScript you've seen in this assignment.**
 
-The JavaScript in this assignment is part of an .html file. The .html file can be opened with a browser (the default on my computer is chrome). The browser knows which code is JavaScript and not html because it is inside a <script> </script> box. In my version of chrome, you can look at the console by using <rightclick> + Inspect and then navigating to the console window.
+The JavaScript in this assignment is part of an .html file. The .html file can be opened with a browser (the default on my computer is chrome). The browser knows which code is JavaScript and not html because it is inside a ```<script> </script>``` box. In my version of chrome, you can look at the console by using rightclick + Inspect and then navigating to the console window.
 
 * **What functions in JavaScript seem to be similar in function to the `print` function in Python? (There are two.) Why might you use one and not the other? Explain briefly.**
 
-console.log(<text>) will print your text in the console. This is useful for debugging because it won't affect how the page is viewed by visitors and is less annoying than a pop up box.
+`console.log(text)` will print your text in the console. This is useful for debugging because it won't affect how the page is viewed by visitors and is less annoying than a pop up box.
 
-alert(<text>) will print your text in a pop up box. This is a good place to put really important information.
+`alert(text)` will print your text in a pop up box. This is a good place to put really important information.
 
 * **What code would have to comment out to get rid of the pop-up box when you load the page? (Related to the last question.) Do that in the code file, and then, add code so that a text box will appear that contains the current date and time! *HINT:* Look through the rest of the code first...**
 
-You need to comment out line 13 which says ```alert("hello");```. To instead have code that gives the current date and time, insert ```alert(Date());``` in line 14.
+You need to comment out line 13 which says ```alert("hello");```. To instead have code that gives the current date and time, insert ```alert(new Date());``` in line 14.
 
 * **How can you put your own name at the top where it currently says "A name"? Explain very briefly how to do so, and replace `A name` in the web page with your own name.**
 
-You just have to replace the string "A name" with your own name in quotes, I did this "Samantha Pinella".
+You just have to replace the string "A name" in `document.querySelector('h1').innerHTML = "A name";` with your own name in quotes.
 
 * **What does the word `document` represent in this code? Explain briefly.**
 
@@ -109,7 +104,7 @@ The DOM (document object model) represents the structure of the page. Thus `docu
 		`document.querySelector('#items').innerHTML = document.getElementsByTagName('li').length`
 )? Explain, briefly (<= 2 sentences).**
 
-This query counts the number of elements that are in a list. It just looks for items with the <li> tag.
+This query counts the number of elements that are in any list. It just looks for items with the <li> (list) tag.
 
 * **What color would the background of this page be <u>if there were no JavaScript in this page</u>?**
 
@@ -128,11 +123,11 @@ It's because the paragraph tag ```<p>``` was restyled:
 	line-height: 1.5;
 }
 ```
-You can change the background color by changing ```#b3b3b3``` and the border color by changing ```#FFFFFF```.
+You can change the background color by changing ```#b3b3b3``` and the border color by changing ```#FFFFFF```. I changed the border color to `#00ccff`.
 
 * **Edit the code so that, if you highlight `McGill University` and copy it, you see the text `O Canada` near the bottom of the page. Briefly explain why you made the edits that you did -- how did you know/figure out what to do?**
 
-The page already has the feature that if you copy "University of Michigan", the text "Go, Blue" appears at the bottom of the page. There is a comment in the file explaining how this is done. I wrote a function called copyFunction2 which is defined the same way as copyFunction except with "O, Canada" in place of "Go, Blue!". Then where McGill University appears on the page, I linked it to copyFunction2: ```<li oncopy = "copyFunction2()">McGill University</li>```.
+The page already has the feature that if you copy "University of Michigan", the text "Go Blue" appears at the bottom of the page. There is a comment in the file explaining how this is done. I wrote a function called copyFunction2 which is defined the same way as copyFunction except with "O, Canada" in place of "Go Blue!". Then where McGill University appears on the page, I linked it to copyFunction2: ```<li oncopy = "copyFunction2()">McGill University</li>```.
 
 * **In the original code, when you click the button that says `Wow`, you see a text box! Wow. Explain briefly in your own words why the following code causes that to happen:**
 
@@ -146,7 +141,7 @@ function handleClick(){
 ```js
 <button onclick=handleClick() id="wow-button">Wow</button>
 ```
-The function handleClick will create a pop-box with that says 'hello' when it is called. Then in the code for the page, the tag <button> creates a clickable button; onclick=handleClick() tells it to call the function handleClick. The button says Wow on it because the text ```Wow``` is inside the button tag.
+The function handleClick will create a pop-box with that says 'hello' when it is called. Then in the code for the page, the tag <button> creates a clickable button; `onclick=handleClick()` instructs the page to execute handleClick when the button is clicked. The button says Wow on it because the text ```Wow``` is inside the button tag.
 
 
 
@@ -164,7 +159,7 @@ This is now added, the button is next to the Wow button.
 * **When you enter input that isn't valid, you see an error that is red. Why is the error in red? Why is the response for valid inputs blue?**
 
 It's because these colors were set in the style part of the code:
-```js
+```
 		<style type="text/css">
     .error{
         color: red;
@@ -173,7 +168,7 @@ It's because these colors were set in the style part of the code:
         color: blue;
     }		
 ```
-And then later when there is an error, the result is pointed back to this style with ```class = error```: ```$("#result").html('<p class="error">Not valid!</p>').show().fadeOut(10000);``` and similar for when the input is valid.
+And then later when there is an error, the result is pointed back to this style where you see ```class = "error"``` in the line ```$("#result").html('<p class="error">Not valid!</p>').show().fadeOut(10000);``` and similar for when the input is valid.
 
 
 * **What is this line `var regex = /^[a-zA-Z]+$/;` helping with? And if you googled something to figure that out, what did you google, and what, briefly, did you learn? (If you didn't need to google, you can leave that out, but explain briefly what that line is helping the program do, anyway.)**
@@ -193,11 +188,11 @@ if(thing == other thing){
 
 * **What do you think the `10000` refers to in the code `.fadeOut(10000)`?**
 
-It controls how long the text is on the page. I changed it to 1000000000 and the text stayed a long time (I didn't wait for it to fade).
+It controls how long the text is on the page. I changed it to 1000000000 and the text stayed a long time (unsure how long, I didn't wait for it to fade).
 
 * **What do you think is going on with the following code at the beginning of the program? Note that the most important thing to do for answering this question is to be thoughtful and clear, not to be absolutely correct:**
 
-```js
+```
 $(document).ready(function(){
     $("form").submit(function(event){
 ```
