@@ -113,9 +113,12 @@ This query counts the number of elements that are in a list. It just looks for i
 
 * **What color would the background of this page be <u>if there were no JavaScript in this page</u>?**
 
+The background would be white, I removed the line ```body.style.background = "#CCEE00";``` and that made the background white.
+
+
 * **Why are there a couple of gray boxes on the screen with a different colored border? How could you edit this code to make them a different color? Explain briefly. Then edit the code to make those boxes some shade of blue, of your choosing.**
 
-It's because the paragraph tag <p> was restyled:
+It's because the paragraph tag ```<p>``` was restyled:
 
 ```p{
 	background-color: #b3b3b3;
@@ -123,9 +126,13 @@ It's because the paragraph tag <p> was restyled:
 	padding: 3%;
 	font-size: 1.1em;
 	line-height: 1.5;
-}```
+}
+```
+You can change the background color by changing ```#b3b3b3``` and the border color by changing ```#FFFFFF```.
 
 * **Edit the code so that, if you highlight `McGill University` and copy it, you see the text `O Canada` near the bottom of the page. Briefly explain why you made the edits that you did -- how did you know/figure out what to do?**
+
+The page already has the feature that if you copy "University of Michigan", the text "Go, Blue" appears at the bottom of the page. There is a comment in the file explaining how this is done. I wrote a function called copyFunction2 which is defined the same way as copyFunction except with "O, Canada" in place of "Go, Blue!". Then where McGill University appears on the page, I linked it to copyFunction2: ```<li oncopy = "copyFunction2()">McGill University</li>```.
 
 * **In the original code, when you click the button that says `Wow`, you see a text box! Wow. Explain briefly in your own words why the following code causes that to happen:**
 
@@ -139,10 +146,13 @@ function handleClick(){
 ```js
 <button onclick=handleClick() id="wow-button">Wow</button>
 ```
+The function handleClick will create a pop-box with that says 'hello' when it is called. Then in the code for the page, the tag <button> creates a clickable button; onclick=handleClick() tells it to call the function handleClick. The button says Wow on it because the text ```Wow``` is inside the button tag.
 
 
 
 * **Knowing what you learned from the previous question, add code/markup to the `jsPracticeLab.html` file *so that* there is a button with the text `Spring Equinox 2019` on it somewhere on the page, and when that button is clicked, a text box containing the text `March 20, 2019` appears. (There's no function -- that I am aware of -- to automatically get this info, you've got to type it yourself.)**
+
+This is now added, the button is next to the Wow button.
 
 
 
@@ -150,13 +160,40 @@ function handleClick(){
 
 * **Check out the file `jquerylib_submit_example.html`. This is an example of code that uses a package called `jQuery` (and this will need you to have an internet connection to run it properly, although the other file does not). Check out resources above for more on jQuery!**
 
+
 * **When you enter input that isn't valid, you see an error that is red. Why is the error in red? Why is the response for valid inputs blue?**
+
+It's because these colors were set in the style part of the code:
+```js
+		<style type="text/css">
+    .error{
+        color: red;
+    }
+    .good {
+        color: blue;
+    }		
+```
+And then later when there is an error, the result is pointed back to this style with ```class = error```: ```$("#result").html('<p class="error">Not valid!</p>').show().fadeOut(10000);``` and similar for when the input is valid.
+
 
 * **What is this line `var regex = /^[a-zA-Z]+$/;` helping with? And if you googled something to figure that out, what did you google, and what, briefly, did you learn? (If you didn't need to google, you can leave that out, but explain briefly what that line is helping the program do, anyway.)**
 
+I first googled 'regex variable' and learned that 'regex' means 'regular expression'. That made it easier to look up what is a regular expression; I learned that it is sequence of characters to look for in a search. So then the line `var regex = /^[a-zA-Z]+$/;` is saying that the regular expression is all letters, upper and lower case. This will be how JavaScript tests that the input is only one word.
+
 * **What's different about the syntax of conditional statements in JavaScript, compared to Python?**
 
+Python needs tabs/indentations to identify blocks of code while JavaScript uses brackets. An if statement in JavaScript will look like
+```
+if(thing == other thing){
+	when true do this
+} else { otherwise do this
+}
+```
+.
+
 * **What do you think the `10000` refers to in the code `.fadeOut(10000)`?**
+
+It controls how long the text is on the page. I changed it to 1000000000 and the text stayed a long time (I didn't wait for it to fade).
 
 * **What do you think is going on with the following code at the beginning of the program? Note that the most important thing to do for answering this question is to be thoughtful and clear, not to be absolutely correct:**
 
@@ -164,6 +201,9 @@ function handleClick(){
 $(document).ready(function(){
     $("form").submit(function(event){
 ```
+
+From the reading, I think the syntax ```function(){}``` is a way of executing a nameless function. Then ```(document).ready(function(){})``` is specifying something to execute when the page loads. The word ```"form"``` points to the line ```<form action="" method="post" id="users">``` and sets up another nameless function to execute when text has been submitted in the textbox.
+
 
 
 * **Add some code to the `jquerylib_submit_example.html` file so that, if the input is valid and is specifically the text `hello`, rather than the visible output being `Nice!` in blue, the visible output should be `Hello to you too!`, also in blue, just like `Nice!` is.**
